@@ -120,9 +120,6 @@ def create_solution_file(fname):
         file = open(filename, 'r', encoding="utf8", errors='replace').read()
         file.replace("<table ", "<table class=\"" + table_class + "\" ")
 
-#create_grading_file()
-#create_solution_file()
-
 # main.py
 import sys
 
