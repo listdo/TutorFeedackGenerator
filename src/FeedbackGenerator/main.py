@@ -76,7 +76,7 @@ def create_grading_file():
                 worksheet.write(1, 4, f'Comment', bold);
 
                 i = 2;
-                start = 2;
+                start = 3;
 
                 for (index, row) in tasks.iterrows():
                     worksheet.write(i, 0, row["Task"])
@@ -96,7 +96,7 @@ def create_grading_file():
             workbook.close()
 
 def create_solution_file():
-    fname = "CGB4_BB_EX2_G2"
+    fname = "CGB4_BB_EX1_G1"
     split = fname.split("_")
 
     group_name = split[len(split) - 1].lower()
@@ -106,7 +106,7 @@ def create_solution_file():
 
     students = pd.read_csv(filepath_or_buffer=stud_file, skiprows=1)
 
-    isExist = os.path.exists(f'{fname}')
+    isExist = os.path.exists(f'./grading/{fname}')
 
     if not isExist:
         # Create a new directory because it does not exist
@@ -114,13 +114,11 @@ def create_solution_file():
 
     for name in students["name"]:
         df = pd.read_excel(filename, sheet_name=name, index_col=[0])
+        df.rename( columns={'Unnamed: 4':''}, inplace=True )
         df = df.replace(np.nan, '', regex=True)
         df.to_html(f"./grading/{fname}/{name}.html")
 
         file = open(filename, 'r', encoding="utf8", errors='replace').read()
         file.replace("<table ", "<table class=\"" + table_class + "\" ")
-
-create_grading_file()
-
-
-#create_solution_file()
+#create_grading_file()
+create_solution_file()
