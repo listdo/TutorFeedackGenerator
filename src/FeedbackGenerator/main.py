@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import xlsxwriter
-import glob, os
+import os
 
 table_class = "rwd-table"
 
@@ -22,8 +22,10 @@ class Assignment:
     lecture = ""
     excercise = ""
 
+
 def get_next_element(f):
     return f.readline().split(":")[1].rstrip();
+
 
 def create_grading_file():
 
@@ -68,7 +70,6 @@ def create_grading_file():
                 worksheet.write(0, 2, f'Lecture: {assignment.lecture}');
                 worksheet.write(0, 3, f'Assignment: {assignment.excercise}');
 
-
                 worksheet.write(1, 0, f'Tasks', bold);
                 worksheet.write(1, 1, f'Description', bold);
                 worksheet.write(1, 2, f'Possible Points', bold);
@@ -94,6 +95,7 @@ def create_grading_file():
                     worksheet.set_column(col_idx, col_idx + 10, column_width)
 
             workbook.close()
+
 
 def create_solution_file(fname):
     split = fname.split("_")
@@ -130,11 +132,3 @@ if __name__ == "__main__":
     if sys.argv[1] == "-solution":
         if not sys.argv[2] == "":
             create_solution_file(sys.argv[2])
-
-
-
-
-
-
-
-
