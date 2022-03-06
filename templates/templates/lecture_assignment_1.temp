@@ -1,0 +1,13 @@
+author:Max Mustermann
+lecture:DemoLecture_1
+exercise:EX1
+
+Task;SubTask;Points
+Task 1;Task 1 Title;8
+Task 1;Task 1 Title 2;4
+Task 2;Task 2 Title 1;10
+Task 2;Task 2 Title 2;10
+Task 3;Task 3 Title 1;8
+Task 3;Task 3 Title 2;4
+Task 4;Programmierstil;10
+Task 4;Dokumentation;5
