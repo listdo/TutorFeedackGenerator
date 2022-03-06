@@ -95,8 +95,7 @@ def create_grading_file():
 
             workbook.close()
 
-def create_solution_file():
-    fname = "CGB4_BB_EX1_G1"
+def create_solution_file(fname):
     split = fname.split("_")
 
     group_name = split[len(split) - 1].lower()
@@ -120,5 +119,25 @@ def create_solution_file():
 
         file = open(filename, 'r', encoding="utf8", errors='replace').read()
         file.replace("<table ", "<table class=\"" + table_class + "\" ")
+
 #create_grading_file()
-create_solution_file()
+#create_solution_file()
+
+# main.py
+import sys
+
+if __name__ == "__main__":
+    if sys.argv[1] == "-excel":
+        create_grading_file()
+
+    if sys.argv[1] == "-solution":
+        if not sys.argv[2] == "":
+            create_solution_file(sys.argv[2])
+
+
+
+
+
+
+
+
